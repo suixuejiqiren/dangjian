@@ -83,8 +83,9 @@ router.post("/addCommon",(req,res,next)=>{
     let{id,content}=req.body
     let userId = req.session.user._id
     
-    summary.findOne({_id:id}, {common:{ $elemMatch: {userId:userId} } } ).then(dt=>{
-        if(dt==null){
+    // summary.find({_id:id}, {common:{$elemMatch: {userId}} } ).then(dt=>{
+    summary.find({_id:id, "common.userId": userId} ).then(dt=>{
+        if(dt.length == 0){
             summary.update({_id:id},{$push:{common:{userId,content}}})
             .then((err,data)=>{
                 if(err){
@@ -109,6 +110,8 @@ router.post("/addCommon",(req,res,next)=>{
                 msg:"每个用户只可评论一次"
             })
         }
+    }).catch(err => {
+        console.log(err)
     })
 })
 
