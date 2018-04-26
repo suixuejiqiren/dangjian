@@ -4,8 +4,7 @@ var summary = require('../database/model/summary')
 
 
 router.get("/get",(req, res,next) => {
-    let {discussId,page=1,pageSize=10,id} = req.body;
-    let params=discussId;
+    let {discussId,page=1,pageSize=10,id} = req.query;
     if(id){
         summary.findOne({_id:id}).then(data=>{
             res.json({
@@ -17,7 +16,7 @@ router.get("/get",(req, res,next) => {
         })
     }
         else{
-            summary.find(params).limit(pageSize).skip((page-1)*pageSize).then(data => {
+            summary.find({discussId:discussId}).limit(pageSize).skip((page-1)*pageSize).then(data => {
                 res.json({
                     data: data,
                     code: 200,

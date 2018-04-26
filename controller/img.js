@@ -3,8 +3,8 @@ var router = express.Router();
 var imgs = require('../database/model/img')
 
 router.post('/add',(req,res)=>{
-    let {img,title}=req.body
-    imgs.create({img,title},(err,backData)=>{
+    let {img,title,url}=req.body
+    imgs.create({img,title,url},(err,backData)=>{
         if(err){
             res.json({
                 data:err,

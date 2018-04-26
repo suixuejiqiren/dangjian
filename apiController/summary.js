@@ -83,7 +83,7 @@ router.post("/addCommon",(req,res,next)=>{
     let{id,content}=req.body
     let userId = req.session.user._id
     
-    summary.findOne({userId}).then(dt=>{
+    summary.findOne({_id:id}, {common:{ $elemMatch: {userId:userId} } } ).then(dt=>{
         if(dt==null){
             summary.update({_id:id},{$push:{common:{userId,content}}})
             .then((err,data)=>{
