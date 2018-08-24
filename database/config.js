@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/dangcrm'); 
+mongoose.connect('mongodb://huashan:huashan123@localhost:27017/dangcrm', {useNewUrlParser: true});
 
 
 var db = mongoose.connection;
