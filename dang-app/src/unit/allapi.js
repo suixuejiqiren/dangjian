@@ -1,0 +1,22 @@
+export default {
+  login:'login',
+  getNews: 'news/get',
+  addNews: 'news/add',
+  delNews:'news/del',
+  updateNews:'news/update',
+  addImgs: 'img/add',
+  getImgs: 'img/get',
+  delImgs:'img/del',
+  addcategory: 'category/add',
+  getcategory: 'category/get',
+  delcategory:'category/del',
+  addUser:'users/add',
+  getUser:'users/get',
+  delUser:'users/del',
+  getDiscuss:"discuss/get",
+  getSummary:'summary/get',
+  delSummary:'summary/update',
+  getinteract:'interact/get',
+  delinteract:'interact/del',
+  changeAll:'users/updateAll'    
+}
